@@ -29,7 +29,21 @@ const CATEGORIES: EmploiCategory[] = [
       { id: "s2-ges-tc", name: "S2 Gestion TC", fileName: "S2_Gestion_TC" },
       { id: "s4-eco-tc", name: "S4 Economie TC", fileName: "S4_Economie_TC" },
       { id: "s4-ges-tc", name: "S4 Gestion TC", fileName: "S4_Gestion_TC" },
-      { id: "s6-ges-cff", name: "S6 Gestion Parcours CFF", fileName: "S6_Gestion_Parcours_CFF" }
+      { id: "s6-ges-cff", name: "S6 Gestion Parcours CFF", fileName: "S6_Gestion_Parcours_CFF" },
+      { id: "s6-eco-ei", name: "S6 Economie - Parcours Economie Internationale", fileName: "S6_Economie_Parcours_Economie_Internationale" },
+      { id: "s6-eco-pe", name: "S6 Economie - Parcours Econométrie", fileName: "S6_Economie_Parcours_Econometrie" },
+      { id: "s6-ges-cm", name: "S6 Gestion - Parcours Commerce & Marketing", fileName: "S6_Gestion_Parcours_Commerce_Marketing" },
+      { id: "s6-ges-mrh", name: "S6 Gestion - Parcours Management des Ressources Humaines", fileName: "S6_Gestion_Parcours_Management_Des_Ressources_Humaines" }
+    ]
+  },
+  {
+    title: "🇫🇷 Droit en Langue Française (DLF)",
+    icon: "🇫🇷",
+    items: [
+      { id: "s2-dlf-priv-pub-tc", name: "S2 DLF Privé & Public TC", fileName: "S2_DLF_Prive_Public_TC" },
+      { id: "s4-dlf-priv-pub-tc", name: "S4 DLF Privé & Public TC", fileName: "S4_DLF_Prive_Public_TC" },
+      { id: "s6-dlf-prive", name: "S6 DLF Privé (Droit des affaires & Droit et contentieux privé)", fileName: "S6_DLF_Prive" },
+      { id: "s6-dlf-public", name: "S6 DLF Public (Institutions Politiques & Action Publique)", fileName: "S6_DLF_Public" }
     ]
   },
   {
@@ -38,7 +52,8 @@ const CATEGORIES: EmploiCategory[] = [
     items: [
       { id: "s2-law-pub-tc", name: "السداسي 2 مسلك القانون العام - جذع مشترك", fileName: "S2_Droit_Public_TC" },
       { id: "s4-law-pub-tc", name: "السداسي 4 مسلك القانون العام - جذع مشترك", fileName: "S4_Droit_Public_TC" },
-      { id: "s4-law-pub-fr", name: "السداسي 4 مسلك القانون العام - الفرنسية", fileName: "S4_Droit_Public_FR" }
+      { id: "s6-law-pub-am", name: "السداسي 6 مسلك قانون عام - الدراسات الإدارية والمالية", fileName: "S6_Droit_Public_Parcours_Etudes_Administratives_Financieres" },
+      { id: "s6-law-pub-sp", name: "السداسي 6 مسلك قانون عام - الدراسات السياسية والدولية", fileName: "S6_Droit_Public_Parcours_Etudes_Politiques_Internationales" }
     ]
   },
   {
@@ -48,7 +63,9 @@ const CATEGORIES: EmploiCategory[] = [
       { id: "s2-law-priv-tc", name: "السداسي 2 مسلك القانون الخاص - جذع مشترك", fileName: "S2_Droit_Prive_TC" },
       { id: "s4-law-priv-tc", name: "السداسي 4 مسلك القانون الخاص - جذع مشترك", fileName: "S4_Droit_Prive_TC" },
       { id: "s6-law-priv-cm", name: "السداسي 6 قانون خاص - مسار القانون المدني", fileName: "S6_Droit_Prive_Parcours_Droit_Civil" },
-      { id: "s6-law-priv-mj", name: "السداسي 6 قانون خاص - مسار المهن القانونية والقضائية", fileName: "S6_Droit_Prive_Parcours_Metiers_Juridiques_Judiciaires" }
+      { id: "s6-law-priv-mj", name: "السداسي 6 قانون خاص - مسار المهن القانونية والقضائية", fileName: "S6_Droit_Prive_Parcours_Metiers_Juridiques_Judiciaires" },
+      { id: "s6-law-priv-cg", name: "السداسي 6 قانون خاص - مسار العلوم الجنائية", fileName: "S6_Droit_Prive_Parcours_Sciences_Criminelles" },
+      { id: "s6-law-priv-ma", name: "السداسي 6 قانون خاص - مسار قانون المال والأعمال", fileName: "S6_Droit_Prive_Parcours_Droit_Affaires_Et_Finance" }
     ]
   }
 ];
@@ -62,12 +79,75 @@ export const EmploiPage: React.FC<EmploiPageProps> = ({ onNavigate }) => {
     setTimeout(() => {
       setDownloadingId(null);
       
-      if (item.id === "s2-law-priv-tc") {
+      if (item.id === "s2-eco-tc") {
+        // Direct link to the official Economy S2 Google Drive PDF file
+        window.open("https://drive.google.com/file/d/1nbk8wmJiyRnN5r7RMHjJtyV0xoBWAT_A/view?usp=sharing", "_blank");
+      } else if (item.id === "s2-ges-tc") {
+        // Direct link to the official Gestion S2 Google Drive PDF file
+        window.open("https://drive.google.com/file/d/1lSbs_oyrH6Xl3Imx7loKyYOQ5sj9HleI/view?usp=sharing", "_blank");
+      } else if (item.id === "s4-eco-tc") {
+        // Direct link to the official Economy S4 Google Drive PDF file
+        window.open("https://drive.google.com/file/d/1YC60yVHNE8ULaMl_lF7Sv6gbyh6vEx9n/view?usp=sharing", "_blank");
+      } else if (item.id === "s4-ges-tc") {
+        // Direct link to the official Gestion S4 Google Drive PDF file
+        window.open("https://drive.google.com/file/d/1930QZ7g5q9Wi9brBuUK3k18Xbrr3mNvc/view?usp=sharing", "_blank");
+      } else if (item.id === "s6-eco-ei") {
+        // Direct link to the official Economy S6 International Economy Google Drive PDF file
+        window.open("https://drive.google.com/file/d/159WW03b6JAXssNo5ptRbNd6nN1vRouw8/view?usp=sharing", "_blank");
+      } else if (item.id === "s6-eco-pe") {
+        // Direct link to the official Economy S6 Econometrics Google Drive PDF file
+        window.open("https://drive.google.com/file/d/1ubz5AeX-w0fAXyae1QfBs_aHkmQy6CEL/view?usp=sharing", "_blank");
+      } else if (item.id === "s6-ges-cff") {
+        // Direct link to the official Gestion S6 CFF Google Drive PDF file
+        window.open("https://drive.google.com/file/d/1o4qJREhMtGG6dOXvdkfHsd2jDmoA_IBV/view?usp=sharing", "_blank");
+      } else if (item.id === "s6-ges-cm") {
+        // Direct link to the official Commerce & Marketing S6 Google Drive PDF file
+        window.open("https://drive.google.com/file/d/1UK2KYh72dK3w8HTHkCoSS6xkUvaYxpUO/view?usp=sharing", "_blank");
+      } else if (item.id === "s6-ges-mrh") {
+        // Direct link to the official HR Management S6 Google Drive PDF file
+        window.open("https://drive.google.com/file/d/1PH2wQg1FdS3GAgxOsF2G2CeETzOqI8za/view?usp=sharing", "_blank");
+      } else if (item.id === "s2-law-priv-tc") {
         // Direct link to the official Google Drive PDF file
         window.open("https://drive.google.com/file/d/1F9sfHLbD_lZxDCaZQkmJ0NSerAdZUDbE/view?usp=sharing", "_blank");
       } else if (item.id === "s2-law-pub-tc") {
         // Direct link to the official Law Public S2 Google Drive PDF file
         window.open("https://drive.google.com/file/d/11enLoD-D-7v3QIAYUSQqA838KXJWPNED/view?usp=sharing", "_blank");
+      } else if (item.id === "s4-law-priv-tc") {
+        // Direct link to the official Law Private S4 Google Drive PDF file
+        window.open("https://drive.google.com/file/d/1jCK0G8z1jnhOu3USk0zcNTICiAUXi8rb/view?usp=sharing", "_blank");
+      } else if (item.id === "s4-law-pub-tc") {
+        // Direct link to the official Law Public S4 Google Drive PDF file
+        window.open("https://drive.google.com/file/d/1pZp7ErmJjjnWFhbWzTqpQZDikWatxldY/view?usp=sharing", "_blank");
+      } else if (item.id === "s6-law-priv-cg") {
+        // Direct link to the official Law Private S6 Criminology Google Drive PDF file
+        window.open("https://drive.google.com/file/d/1MOtg2FAE8HHneX6ZMWTAfPVI3AYx6PMT/view?usp=sharing", "_blank");
+      } else if (item.id === "s6-law-priv-cm") {
+        // Direct link to the official Law Private S6 Civil Law Google Drive PDF file
+        window.open("https://drive.google.com/file/d/1ixGJTsC7tWjNYSDibcSqNli630Be2Xrl/view?usp=sharing", "_blank");
+      } else if (item.id === "s6-law-priv-mj") {
+        // Direct link to the official Law Private S6 Legal Careers Google Drive PDF file
+        window.open("https://drive.google.com/file/d/1R1K6CN_uVuNajrpknmR6tfez1Ecgf2ET/view?usp=sharing", "_blank");
+      } else if (item.id === "s6-law-priv-ma") {
+        // Direct link to the official Law Private S6 Business & Finance Law Google Drive PDF file
+        window.open("https://drive.google.com/file/d/1u9xp9RQMRjl4cThvROp4Nm02_U4Iyq8o/view?usp=sharing", "_blank");
+      } else if (item.id === "s6-law-pub-am") {
+        // Direct link to the official Law Public S6 Administrative & Financial Studies Google Drive PDF file
+        window.open("https://drive.google.com/file/d/15NFAulTBSzXxmWiRi4oeuvHi5DRjLHFy/view?usp=sharing", "_blank");
+      } else if (item.id === "s6-law-pub-sp") {
+        // Direct link to the official Law Public S6 Political & International Studies Google Drive PDF file
+        window.open("https://drive.google.com/file/d/1JJ1Q9D6ZYQqX80tkpo1w6vn6d6_4VG0I/view?usp=sharing", "_blank");
+      } else if (item.id === "s2-dlf-priv-pub-tc") {
+        // Direct link to the official S2 DLF Privé & Public TC Google Drive PDF file
+        window.open("https://drive.google.com/file/d/1yHZHx2VPnv_SE5eJ0jQpginAuc-TUlpj/view?usp=sharing", "_blank");
+      } else if (item.id === "s4-dlf-priv-pub-tc") {
+        // Direct link to the official S4 DLF Privé & Public TC Google Drive PDF file
+        window.open("https://drive.google.com/file/d/1QRccv2LA5fKoX-5CRYrV4AtbQ0UccIXB/view?usp=sharing", "_blank");
+      } else if (item.id === "s6-dlf-prive") {
+        // Direct link to the official S6 DLF Privé Google Drive PDF file
+        window.open("https://drive.google.com/file/d/1-JG_sRnBDjty1wAdW7ZS9zJbu9GWXVkX/view?usp=sharing", "_blank");
+      } else if (item.id === "s6-dlf-public") {
+        // Direct link to the official S6 DLF Public Google Drive PDF file
+        window.open("https://drive.google.com/file/d/1L-QI_lRjoSDvZWZqGgSSS-O2rpDVPv13/view?usp=sharing", "_blank");
       } else {
         // Fallback for all other items matching original design structure
         const content = `FSJES Study Repository - Official Schedule for ${item.name} for academic year 2025-2026.\nThis schedule has been verified, synchronized, and registered as active.`;

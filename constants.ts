@@ -11,6 +11,20 @@ export const SEMESTERS: string[] = [
     "S4 Economie TC (25-26)",
     "S4 Gestion TC (25-26)",
     "S6 Gestion (CFF) (25-26)",
+    "S2 DLF Privé TC (25-26)",
+    "S2 DLF Public TC (25-26)",
+    "S4 DLF Privé TC (25-26)",
+    "S4 DLF Public TC (25-26)",
+    "S6 DLF Privé (Droit des affaires) (25-26)",
+    "S6 DLF Privé (Droit et contentieux privé) (25-26)",
+    "S6 DLF Public (Institutions Politiques & Action publique) (25-26)",
+    "السداسي 2 مسلك القانون العام",
+    "السداسي 4 مسلك القانون العام",
+    "السداسي 2 مسلك القانون الخاص",
+    "السداسي 4 مسلك القانون الخاص",
+    "السداسي 6 قانون خاص مسار القانون المدني",
+    "السداسي 6 قانون خاص قانون المال والأعمال",
+    "السداسي 6 قانون خاص المهن القانونية والقضائية",
 ];
 
 export const SECTION_DISTRIBUTIONS: SemesterDistribution[] = [

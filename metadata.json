@@ -1,6 +1,8 @@
 {
   "name": "Section FSJES",
-  "description": "An application for university students in Morocco to find their class section by searching their last name for a specific college.",
+  "description": "Section FSJES est une plateforme permettant aux étudiants de FSJES Agadir et FSJES Ait Melloul de trouver rapidement leur section académique pour l'année universitaire 2025-2026.",
   "requestFramePermissions": [],
-  "majorCapabilities": []
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
 }

@@ -21,12 +21,10 @@ import { EmploiPage } from './EmploiPage';
 
 const Navigation = ({ 
   currentView, 
-  onNavigate,
-  onShowScheduleComingSoon
+  onNavigate
 }: { 
   currentView: string; 
   onNavigate: (path: string) => void;
-  onShowScheduleComingSoon: () => void;
 }) => {
   const isHome = currentView === 'home';
   const isCours = currentView === 'cours-exams';
@@ -69,16 +67,17 @@ const Navigation = ({
       </button>
 
       <button
-        onClick={onShowScheduleComingSoon}
-        className={`flex items-center gap-3 px-6 py-2 rounded-2xl transition-all duration-300 cursor-pointer bg-white text-gray-700 hover:bg-gray-50 border border-gray-150 hover:border-gray-300 hover:shadow-xs hover:scale-[1.02] active:scale-[0.98]`}
+        onClick={() => onNavigate('/emploi')}
+        className={`flex items-center gap-3 px-6 py-2 rounded-2xl transition-all duration-300 cursor-pointer ${
+          isEmploi 
+          ? 'bg-blue-600 text-white shadow-lg shadow-blue-200 hover:scale-[1.02] active:scale-[0.98]' 
+          : 'bg-white text-gray-700 hover:bg-gray-50 border border-gray-150 hover:border-gray-300 hover:shadow-xs hover:scale-[1.02] active:scale-[0.98]'
+        }`}
       >
         <Calendar size={18} className="shrink-0" />
         <div className="flex flex-col items-start leading-tight text-right">
-          <div className="flex items-center gap-1">
-            <span className="font-bold text-sm">استعمالات الزمن</span>
-            <span className="bg-amber-500 text-white text-[9px] px-1.5 py-0.5 rounded-full font-bold leading-none select-none">قريباً</span>
-          </div>
-          <span className={`text-[9px] font-medium text-gray-400`}>Emploi du Temps</span>
+          <span className="font-bold text-sm">استعمالات الزمن</span>
+          <span className={`text-[9px] font-medium transition-colors ${isEmploi ? 'text-blue-200' : 'text-gray-400'}`}>Emploi du Temps</span>
         </div>
       </button>
 
@@ -294,7 +293,14 @@ const Results: React.FC<ResultsProps> = ({ results, isLoading, searched, selecte
     "S2 Gestion TC (25-26)",
     "S4 Economie TC (25-26)",
     "S4 Gestion TC (25-26)",
-    "S6 Gestion (CFF) (25-26)"
+    "S6 Gestion (CFF) (25-26)",
+    "السداسي 2 مسلك القانون العام - جذع مشترك (25-26)",
+    "السداسي 4 مسلك القانون العام - جذع مشترك (25-26)",
+    "السداسي 4 مسلك القانون العام - الفرنسية (25-26)",
+    "السداسي 2 مسلك القانون الخاص - جذع مشترك (25-26)",
+    "السداسي 4 مسلك القانون الخاص - جذع مشترك (25-26)",
+    "السداسي 6 قانون خاص - مسار القانون المدني (25-26)",
+    "السداسي 6 قانون خاص - مسار المهن القانونية والقضائية (25-26)"
   ].includes(selectedSemester) : true;
 
   return (
@@ -348,7 +354,13 @@ const Results: React.FC<ResultsProps> = ({ results, isLoading, searched, selecte
               </div>
               
               {/* Massive Section Letter */}
-              <div className="text-8xl font-black text-blue-700 mb-6 drop-shadow-sm select-none">
+              <div className={`font-black text-blue-700 mb-6 drop-shadow-sm select-none ${
+                r.section && r.section.length > 5 
+                  ? 'text-4xl sm:text-5xl' 
+                  : r.section && r.section.length > 2 
+                    ? 'text-6xl' 
+                    : 'text-8xl'
+              }`}>
                 {r.section}
               </div>
               
@@ -819,7 +831,6 @@ function App() {
         <Navigation 
           currentView={view} 
           onNavigate={navigateTo} 
-          onShowScheduleComingSoon={() => setShowScheduleModal(true)} 
         />
         
         <AnimatePresence mode="wait">
@@ -957,63 +968,7 @@ function App() {
         )}
       </AnimatePresence>
 
-      {/* Schedule Coming Soon Modal */}
-      <AnimatePresence>
-        {showScheduleModal && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 overflow-y-auto">
-            {/* Backdrop */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setShowScheduleModal(false)}
-              className="fixed inset-0 bg-gray-900/60 backdrop-blur-xs cursor-pointer z-40"
-            />
-            
-            {/* Content Card */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: 15 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 15 }}
-              transition={{ type: "spring", duration: 0.4 }}
-              className="bg-white rounded-2xl p-6 sm:p-8 max-w-md w-full shadow-2xl relative z-50 border border-gray-100 text-center"
-              dir="rtl"
-            >
-              {/* Modal Title */}
-              <h3 className="text-2xl sm:text-3xl font-black text-gray-900 mb-4 tracking-tight leading-relaxed flex items-center justify-center gap-2">
-                <span>🚧</span><span>قريباً</span>
-              </h3>
-              
-              {/* Divider */}
-              <div className="w-16 h-0.5 bg-gray-100 mx-auto mb-5"></div>
-              
-              {/* Message */}
-              <p className="text-gray-600 text-base font-medium mb-6 leading-relaxed">
-                استعمالات الزمن ستكون متاحة قريباً.
-              </p>
-              
-              {/* Close Button */}
-              <button
-                onClick={() => setShowScheduleModal(false)}
-                className="w-full py-3 px-5 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-bold rounded-xl shadow-lg shadow-blue-200 hover:shadow-none transition-all duration-300 cursor-pointer text-sm"
-              >
-                حسناً
-              </button>
-              
-              {/* Top Left Close X Button */}
-              <button
-                onClick={() => setShowScheduleModal(false)}
-                className="absolute top-4 left-4 p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-full transition-all cursor-pointer"
-                aria-label="Close"
-              >
-                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </button>
-            </motion.div>
-          </div>
-        )}
-      </AnimatePresence>
+
     </div>
   );
 }

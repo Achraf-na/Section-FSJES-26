@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ais-pre-t3rip33vnedao7gb73v32p-122561928457.europe-west3.run.app/sitemap.xml
+Sitemap: https://sectionfsjes.com/sitemap.xml

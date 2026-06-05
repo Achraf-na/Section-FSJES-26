@@ -67,7 +67,7 @@ const Navigation = ({
       </button>
 
       <button
-        onClick={() => onNavigate('/emploi')}
+        onClick={() => onNavigate('/emplois')}
         className={`flex items-center gap-3 px-6 py-2 rounded-2xl transition-all duration-300 cursor-pointer ${
           isEmploi 
           ? 'bg-blue-600 text-white shadow-lg shadow-blue-200 hover:scale-[1.02] active:scale-[0.98]' 
@@ -108,7 +108,7 @@ const Header = () => (
         className="h-12 w-12 sm:h-16 sm:w-16 object-contain shrink-0"
         referrerPolicy="no-referrer"
       />
-      <h1 className="text-3xl sm:text-4xl font-bold text-blue-700">Section FSJES</h1>
+      <div className="text-3xl sm:text-4xl font-bold text-blue-700">Section FSJES</div>
     </div>
     <p className="text-lg text-gray-700">تعرف على فوجك الدراسي بسرعة</p>
   </header>
@@ -407,6 +407,26 @@ const Footer = ({ currentView, onNavigate }: { currentView: string; onNavigate: 
           الرئيسية
         </button>
         <button
+          onClick={() => onNavigate('/cours')}
+          className={`transition-colors duration-200 cursor-pointer ${
+            currentView === 'cours-exams' 
+              ? 'text-blue-600 font-extrabold' 
+              : 'text-gray-500 hover:text-blue-600'
+          }`}
+        >
+          الدروس والامتحانات
+        </button>
+        <button
+          onClick={() => onNavigate('/emplois')}
+          className={`transition-colors duration-200 cursor-pointer ${
+            currentView === 'emploi' 
+              ? 'text-blue-600 font-extrabold' 
+              : 'text-gray-500 hover:text-blue-600'
+          }`}
+        >
+          استعمالات الزمن
+        </button>
+        <button
           onClick={() => onNavigate('/about')}
           className={`transition-colors duration-200 cursor-pointer ${
             currentView === 'about' 
@@ -428,8 +448,13 @@ const Footer = ({ currentView, onNavigate }: { currentView: string; onNavigate: 
         </button>
       </div>
 
+      {/* Footer SEO Text */}
+      <p className="text-gray-500 text-xs sm:text-sm max-w-xl mx-auto leading-relaxed mt-4" dir="rtl">
+        Section FSJES aide les étudiants à trouver rapidement leur section académique, les répartitions et les emplois du temps en quelques clics.
+      </p>
+
       {/* Creator & Copyright Badge */}
-      <div className="flex flex-col items-center gap-3 mt-4">
+      <div className="flex flex-col items-center gap-3 mt-2">
         <div className="flex items-center justify-center gap-1.5 text-sm text-gray-500 font-medium select-none" dir="ltr">
           <span>Powered by</span>
           <span className="font-bold text-gray-700 hover:text-blue-600 transition-colors duration-300">ACHRAF NAIMI</span>
@@ -696,7 +721,9 @@ function App() {
       decodedPath === '/emploi-du-temps' || 
       decodedPath === '/emploi-du-temps/' || 
       decodedPath === '/emploi' || 
-      decodedPath === '/emploi/'
+      decodedPath === '/emploi/' ||
+      decodedPath === '/emplois' ||
+      decodedPath === '/emplois/'
     ) {
       return { view: 'emploi' as const, slug: null, tab: undefined };
     }
@@ -710,6 +737,10 @@ function App() {
     }
     if (decodedPath.startsWith('/emploi/')) {
       const slug = decodedPath.substring(8).replace(/\/$/, '');
+      return { view: 'emploi' as const, slug, tab: undefined };
+    }
+    if (decodedPath.startsWith('/emplois/')) {
+      const slug = decodedPath.substring(9).replace(/\/$/, '');
       return { view: 'emploi' as const, slug, tab: undefined };
     }
     if (decodedPath.startsWith('/examens/')) {
@@ -746,15 +777,21 @@ function App() {
       link.setAttribute('rel', 'canonical');
       document.head.appendChild(link);
     }
-    const origin = window.location.origin;
-    link.setAttribute('href', `${origin}${path === '/' ? '' : path}`);
+    const base = "https://sectionfsjes.com";
+    link.setAttribute('href', `${base}${path === '/' ? '/' : path}`);
   };
 
   useEffect(() => {
     updateCanonicalLink(currentPath);
     if (view === 'home') {
-      document.title = "Section FSJES | Trouver votre section académique FSJES 2025-2026";
-      updateMetaDescription("Section FSJES est une plateforme permettant aux étudiants de FSJES Agadir et FSJES Ait Melloul de trouver rapidement leur section académique pour l'année universitaire 2025-2026.");
+      document.title = "Section FSJES - Répartition & Emploi du Temps 2025-2026";
+      updateMetaDescription("Trouvez rapidement votre section académique, les répartitions et les emplois du temps FSJES Agadir et Ait Melloul pour l'année universitaire 2025-2026.");
+      updateMetaProperty("og:title", "Section FSJES - Répartition & Emploi du Temps 2025-2026");
+      updateMetaProperty("og:description", "Trouvez rapidement votre section académique, les répartitions et les emplois du temps FSJES Agadir et Ait Melloul pour l'année universitaire 2025-2026.");
+      updateMetaProperty("og:url", "https://sectionfsjes.com/");
+      updateMetaName("twitter:title", "Section FSJES - Répartition & Emploi du Temps 2025-2026");
+      updateMetaName("twitter:description", "Trouvez rapidement votre section académique, les répartitions et les emplois du temps FSJES Agadir et Ait Melloul pour l'année universitaire 2025-2026.");
+      updateMetaName("twitter:url", "https://sectionfsjes.com/");
     } else if (view === 'about') {
       document.title = "من نحن - Section FSJES - Powered by ACHRAF NAIMI";
       updateMetaDescription("تعرف على منصة وموقع Section FSJES لتسهيل البحث عن الفوج الدراسي لطلبة كليات المغرب.");
@@ -777,6 +814,26 @@ function App() {
       document.head.appendChild(meta);
     }
     meta.setAttribute('content', desc);
+  };
+
+  const updateMetaProperty = (property: string, content: string) => {
+    let meta = document.querySelector(`meta[property="${property}"]`);
+    if (!meta) {
+      meta = document.createElement('meta');
+      meta.setAttribute('property', property);
+      document.head.appendChild(meta);
+    }
+    meta.setAttribute('content', content);
+  };
+
+  const updateMetaName = (name: string, content: string) => {
+    let meta = document.querySelector(`meta[name="${name}"]`);
+    if (!meta) {
+      meta = document.createElement('meta');
+      meta.setAttribute('name', name);
+      document.head.appendChild(meta);
+    }
+    meta.setAttribute('content', content);
   };
 
   const handleSearch = async (e: React.FormEvent) => {
@@ -843,7 +900,8 @@ function App() {
               transition={{ duration: 0.3 }}
             >
               {!noticeAccepted && <Notice onAccept={acceptNotice} />}
-              <main className="bg-white p-6 sm:p-8 rounded-xl shadow-lg transition-all">
+              <main className="bg-white p-6 sm:p-8 rounded-xl shadow-lg transition-all border border-gray-100 relative">
+                <h1 className="sr-only font-bold">Trouver votre section académique FSJES 2025-2026</h1>
                 <CollegeSelector 
                   selectedCollege={selectedCollege} 
                   onSelectCollege={(id) => {

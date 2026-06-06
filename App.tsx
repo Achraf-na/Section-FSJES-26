@@ -785,13 +785,13 @@ function App() {
     updateCanonicalLink(currentPath);
     if (view === 'home') {
       document.title = "Section FSJES | البحث عن الفوج الدراسي";
-      updateMetaDescription("منصة تساعد طلبة FSJES على العثور على الفوج الدراسي، التقسيمات واستعمالات الزمن بسرعة وسهولة.");
+      updateMetaDescription("منصة تساعد طلبة FSJES على العثور على الفوج الدراسي، الدروس، الامتحانات واستعمالات الزمن بسرعة وسهولة.");
       updateMetaProperty("og:title", "Section FSJES | البحث عن الفوج الدراسي");
-      updateMetaProperty("og:description", "منصة تساعد طلبة FSJES على العثور على الفوج الدراسي، التقسيمات واستعمالات الزمن بسرعة وسهولة.");
+      updateMetaProperty("og:description", "منصة تساعد طلبة FSJES على العثور على الفوج الدراسي، الدروس، الامتحانات واستعمالات الزمن بسرعة وسهولة.");
       updateMetaProperty("og:url", "https://sectionfsjes.com/");
       updateMetaProperty("og:image", "https://i.postimg.cc/RFNvr0vj/section-fsjes-logo-3.png");
       updateMetaName("twitter:title", "Section FSJES | البحث عن الفوج الدراسي");
-      updateMetaName("twitter:description", "منصة تساعد طلبة FSJES على العثور على الفوج الدراسي، التقسيمات واستعمالات الزمن بسرعة وسهولة.");
+      updateMetaName("twitter:description", "منصة تساعد طلبة FSJES على العثور على الفوج الدراسي، الدروس، الامتحانات واستعمالات الزمن بسرعة وسهولة.");
       updateMetaName("twitter:url", "https://sectionfsjes.com/");
       updateMetaName("twitter:image", "https://i.postimg.cc/RFNvr0vj/section-fsjes-logo-3.png");
     } else if (view === 'about') {

@@ -784,13 +784,13 @@ function App() {
   useEffect(() => {
     updateCanonicalLink(currentPath);
     if (view === 'home') {
-      document.title = "Section FSJES - Répartition & Emploi du Temps 2025-2026";
-      updateMetaDescription("Trouvez rapidement votre section académique, les répartitions et les emplois du temps FSJES Agadir et Ait Melloul pour l'année universitaire 2025-2026.");
-      updateMetaProperty("og:title", "Section FSJES - Répartition & Emploi du Temps 2025-2026");
-      updateMetaProperty("og:description", "Trouvez rapidement votre section académique, les répartitions et les emplois du temps FSJES Agadir et Ait Melloul pour l'année universitaire 2025-2026.");
+      document.title = "Section FSJES | البحث عن الفوج الدراسي";
+      updateMetaDescription("منصة تساعد طلبة FSJES على العثور على الفوج الدراسي بسرعة وسهولة.");
+      updateMetaProperty("og:title", "Section FSJES | البحث عن الفوج الدراسي");
+      updateMetaProperty("og:description", "منصة تساعد طلبة FSJES على العثور على الفوج الدراسي بسرعة وسهولة.");
       updateMetaProperty("og:url", "https://sectionfsjes.com/");
-      updateMetaName("twitter:title", "Section FSJES - Répartition & Emploi du Temps 2025-2026");
-      updateMetaName("twitter:description", "Trouvez rapidement votre section académique, les répartitions et les emplois du temps FSJES Agadir et Ait Melloul pour l'année universitaire 2025-2026.");
+      updateMetaName("twitter:title", "Section FSJES | البحث عن الفوج الدراسي");
+      updateMetaName("twitter:description", "منصة تساعد طلبة FSJES على العثور على الفوج الدراسي بسرعة وسهولة.");
       updateMetaName("twitter:url", "https://sectionfsjes.com/");
     } else if (view === 'about') {
       document.title = "من نحن - Section FSJES - Powered by ACHRAF NAIMI";

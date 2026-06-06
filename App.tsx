@@ -582,21 +582,28 @@ const AboutPage = () => (
         {/* Contact Section */}
         <div className="mt-6">
           <h4 className="text-xl font-bold text-gray-800 mb-6 relative inline-block">
-            تواصل معي
+            Contact Me
             <span className="absolute bottom-[-6px] right-0 left-0 h-[3px] bg-blue-600 rounded-full"></span>
           </h4>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-md mx-auto mt-2">
-            {/* Email Card */}
+            {/* LinkedIn Card */}
             <a 
-              href="mailto:achrafn314@gmail.com" 
+              href="https://www.linkedin.com/in/achraf-naimi2004/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
               className="flex flex-col items-center justify-center p-5 bg-gray-50 hover:bg-blue-50/50 rounded-2xl border border-gray-100 hover:border-blue-100 transition-all duration-300 group cursor-pointer"
             >
-              <div className="p-3 bg-white rounded-xl shadow-xs text-gray-700 group-hover:text-blue-600 group-hover:scale-110 transition-all duration-300 border border-gray-100">
-                <Mail size={22} />
+              <div className="p-2.5 bg-white rounded-xl shadow-xs text-gray-700 group-hover:scale-110 transition-all duration-300 border border-gray-100 flex items-center justify-center">
+                <img 
+                  src="https://i.postimg.cc/tCsnGGNZ/linkedin-Logo.png" 
+                  alt="LinkedIn" 
+                  className="w-7 h-7 rounded-sm object-cover"
+                  referrerPolicy="no-referrer"
+                />
               </div>
-              <span className="text-sm font-semibold text-gray-800 mt-3 group-hover:text-blue-600 transition-colors">البريد الإلكتروني</span>
-              <span className="text-xs text-gray-500 mt-1 select-all font-mono" dir="ltr">achrafn314@gmail.com</span>
+              <span className="text-sm font-semibold text-gray-800 mt-3 group-hover:text-blue-600 transition-colors">LinkedIn</span>
+              <span className="text-xs text-gray-500 mt-1 font-mono" dir="ltr">Achraf Naimi</span>
             </a>
 
             {/* Instagram Card */}
@@ -608,13 +615,13 @@ const AboutPage = () => (
             >
               <div className="p-2.5 bg-white rounded-xl shadow-xs text-gray-700 group-hover:scale-110 transition-all duration-300 border border-gray-100 flex items-center justify-center">
                 <img 
-                  src="https://i.postimg.cc/Y0HfgxtM/images.jpg" 
+                  src="https://i.postimg.cc/GtFLdz9w/instagram-icon.png" 
                   alt="Instagram" 
                   className="w-7 h-7 rounded-sm object-cover"
                   referrerPolicy="no-referrer"
                 />
               </div>
-              <span className="text-sm font-semibold text-gray-800 mt-3 group-hover:text-blue-600 transition-colors">أنستغرام</span>
+              <span className="text-sm font-semibold text-gray-800 mt-3 group-hover:text-blue-600 transition-colors">Instagram</span>
               <span className="text-xs text-gray-500 mt-1 font-mono" dir="ltr">@achrafn.ai</span>
             </a>
           </div>

@@ -58,10 +58,7 @@ const Navigation = ({
       >
         <BookOpen size={18} className="shrink-0" />
         <div className="flex flex-col items-start leading-tight text-right">
-          <div className="flex items-center gap-1">
-            <span className="font-bold text-sm">الدروس والامتحانات</span>
-            <span className="bg-red-500 text-white text-[9px] px-1.5 py-0.5 rounded-full font-bold animate-pulse leading-none">جديد</span>
-          </div>
+          <span className="font-bold text-sm">الدروس والامتحانات</span>
           <span className={`text-[9px] font-medium transition-colors ${isCours ? 'text-blue-200' : 'text-gray-400'}`}>Cours & Examens</span>
         </div>
       </button>
